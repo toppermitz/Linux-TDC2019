@@ -36,6 +36,7 @@ begin
           case ASignal of
             TPosixSignal.Termination:
             begin
+              //Forçar o Stop quando receber o sinal de finalização para liberar a porta usada pelo HTTP
               Server.Stop;
             end;
             TPosixSignal.Reload:
@@ -54,7 +55,6 @@ begin
         begin
           sleep(1000);
         end;
-
       end;
 
       TPosixDaemon.Run(1000);
